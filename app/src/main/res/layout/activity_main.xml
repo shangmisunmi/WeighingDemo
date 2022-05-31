@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="112dp"
+        android:background="#494D55"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="28.5dp"
+            android:src="@drawable/icon_title" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/version_name"
+                android:textColor="#ffffffff"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_fruit"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:fadeScrollbars="true"
+            android:overScrollMode="never"
+            android:paddingHorizontal="12dp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#D1D2D4" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_trade"
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:id="@+id/tv_trade_name"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Trade name"
+                    android:textColor="#1B202A"
+                    android:textSize="10sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_unit_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Unit Price"
+                    android:textColor="#1B202A"
+                    android:textSize="10sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_trade_name" />
+
+                <TextView
+                    android:id="@+id/tv_net_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="47.5dp"
+                    android:layout_marginTop="2dp"
+                    android:text="Net/Price"
+                    android:textColor="#1B202A"
+                    android:textSize="10sp"
+                    app:layout_constraintLeft_toRightOf="@+id/tv_unit_price"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_trade_name" />
+
+                <TextView
+                    android:id="@+id/tv_sum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="49.5dp"
+                    android:layout_marginTop="2dp"
+                    android:text="Sum"
+                    android:textColor="#1B202A"
+                    android:textSize="10sp"
+                    app:layout_constraintLeft_toRightOf="@+id/tv_net_price"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_trade_name" />
+
+                <TextView
+                    android:id="@+id/tv_reque"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="49.5dp"
+                    android:background="@drawable/bg_reque"
+                    android:paddingHorizontal="6dp"
+                    android:paddingVertical="3dp"
+                    android:text="Reque"
+                    android:textColor="#1B202A"
+                    android:textSize="10sp"
+                    app:layout_constraintLeft_toRightOf="@+id/tv_sum"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_trade_name" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/view_trade"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/cl_trade"
+                android:background="#D1D2D4" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_settle_accounts"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/view_accounts"
+                android:layout_below="@+id/view_trade"
+                android:overScrollMode="never"
+                android:paddingLeft="12dp"
+                android:paddingRight="21dp" />
+
+            <View
+                android:id="@+id/view_accounts"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_above="@+id/rv_total"
+                android:background="#D1D2D4" />
+
+            <RelativeLayout
+                android:id="@+id/rv_total"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+                android:paddingLeft="12dp"
+                android:paddingRight="15.5dp">
+
+                <TextView
+                    android:id="@+id/tv_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:text="0"
+                    android:textColor="#ff1b202a"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_total"
+                    android:layout_marginTop="2dp"
+                    android:text="Total Price:(€)"
+                    android:textColor="#ff494d55"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/tv_settlement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/bg_settlement"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="12dp"
+                    android:text="Settlement"
+                    android:textColor="#FF6000"
+                    android:textSize="12sp" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

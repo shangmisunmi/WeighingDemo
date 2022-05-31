@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">WeighingDemo</string>
+    <string name="title">Sunmi Weighing Demo</string>
+    <string name="version_name">Version：%s</string>
+    <string name="price">€ %.2f</string>
+    <string name="apple">Apple</string>
+    <string name="pear">Pear</string>
+    <string name="persimmon">Persimmon</string>
+    <string name="pomegranate">Pomegranate</string>
+    <string name="cherry">Cherry</string>
+    <string name="orange">Orange</string>
+    <string name="banana">Banana</string>
+    <string name="blueberry">Blueberry</string>
+    <string name="pitaya">Pitaya</string>
+    <string name="lichee">Lichee</string>
+    <string name="watermelon">Watermelon</string>
+    <string name="honeydew">Honeydew</string>
+    <string name="scallions">Scallions</string>
+    <string name="endive">Endive</string>
+    <string name="beet_leaves">Beet_leaves</string>
+    <string name="beetroot">Beetroot</string>
+    <string name="cassava">Cassava</string>
+    <string name="artichoke">Artichoke</string>
+</resources>

@@ -35,13 +35,14 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.MyHold
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
         holder.tvName.setText(list.get(position).getName());
         holder.tvPrice.setText(list.get(position).getPrice() + "€/kg");
-        if (list.get(position).isWeigh()){
+        if (list.get(position).isWeigh()) {
             holder.tvWeigh.setText(list.get(position).getWeigh() + "kg");
-        }else {
+        } else {
             holder.tvWeigh.setText(list.get(position).getWeigh() + "pcs");
         }
         holder.tvTotal.setText(list.get(position).getTotal() + "€");
 
+        holder.ivDelete.setOnClickListener(view -> listener.delete(position));
     }
 
     @Override
@@ -50,7 +51,7 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.MyHold
     }
 
 
-    public void setData(List<AccountsBean> list){
+    public void setData(List<AccountsBean> list) {
         this.list = list;
         notifyDataSetChanged();
     }
@@ -71,5 +72,15 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.MyHold
             tvTotal = itemView.findViewById(R.id.tv_total);
             ivDelete = itemView.findViewById(R.id.iv_delete);
         }
+    }
+
+    private OnClickListener listener;
+
+    public void setOnClickListener(OnClickListener listener) {
+        this.listener = listener;
+    }
+
+    interface OnClickListener {
+        void delete(int position);
     }
 }

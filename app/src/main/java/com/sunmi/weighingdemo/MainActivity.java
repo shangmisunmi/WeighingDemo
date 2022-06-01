@@ -7,10 +7,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private List<AccountsBean> accountsList = new ArrayList<>();
 
     private TextView tvTotal;
+    private TextView tvSettlement;
 
     private int currPosition;
     private double total = 0;
@@ -55,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             if (list.get(position).isWeigh()) {
 
             } else {
-
+                showPcsDialog(currPosition);
             }
         });
 
@@ -64,7 +68,21 @@ public class MainActivity extends AppCompatActivity {
         accountsAdapter = new AccountsAdapter(accountsList, this);
         rvSettleAccounts.setAdapter(accountsAdapter);
 
+        accountsAdapter.setOnClickListener(position -> {
+            changeTotal(accountsList.get(position).getTotal() * -1);
+            accountsList.remove(position);
+            accountsAdapter.notifyDataSetChanged();
+        });
+
         tvTotal = findViewById(R.id.tv_total);
+        tvSettlement = findViewById(R.id.tv_settlement);
+        tvSettlement.setOnClickListener(view -> {
+
+        });
+    }
+
+    private void showPcsDialog(int position) {
+        DialogUtil.showDialog(this, pcs -> insertAccountData(position, pcs));
     }
 
     private void initData() {
@@ -89,10 +107,15 @@ public class MainActivity extends AppCompatActivity {
         adapter.setData(list);
     }
 
-
-    private void insertAccountData(int position) {
-        accountsList.add(new AccountsBean(list.get(position).getName(), list.get(position).getPrice(), 1.52, list.get(position).getPrice() * 1.52, list.get(position).isWeigh()));
+    private void insertAccountData(int position, double weigh) {
+        accountsList.add(new AccountsBean(list.get(position).getName(), list.get(position).getPrice(), weigh, new BigDecimal(list.get(position).getPrice() * weigh).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue(), list.get(position).isWeigh()));
         accountsAdapter.setData(accountsList);
+        changeTotal(list.get(position).getPrice() * weigh);
+    }
 
+    private void changeTotal(double change) {
+        total += change;
+        double resultTotal = new BigDecimal(total).doubleValue();
+        tvTotal.setText(resultTotal + "");
     }
 }

@@ -181,7 +181,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="9dp"
-                    android:text="0"
+                    android:text="0.00"
                     android:textColor="#ff1b202a"
                     android:textSize="18sp" />
 

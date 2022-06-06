@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import java.util.List;
+import java.util.Locale;
 
 public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.MyHolder> {
 
@@ -35,12 +36,13 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.MyHold
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
         holder.tvName.setText(list.get(position).getName());
         holder.tvPrice.setText(list.get(position).getPrice() + "€/kg");
+        String weigh = String.format(Locale.getDefault(), "%.2f", list.get(position).getWeigh());
         if (list.get(position).isWeigh()) {
-            holder.tvWeigh.setText(list.get(position).getWeigh() + "kg");
+            holder.tvWeigh.setText(weigh + "kg");
         } else {
-            holder.tvWeigh.setText(list.get(position).getWeigh() + "pcs");
+            holder.tvWeigh.setText(weigh + "pcs");
         }
-        holder.tvTotal.setText(list.get(position).getTotal() + "€");
+        holder.tvTotal.setText(String.format(Locale.getDefault(), "%.2f", list.get(position).getTotal()) + "€");
 
         holder.ivDelete.setOnClickListener(view -> listener.delete(position));
     }

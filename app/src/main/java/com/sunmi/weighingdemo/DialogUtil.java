@@ -33,7 +33,7 @@ public class DialogUtil {
         TextView tvClear = view.findViewById(R.id.tv_clear);
         TextView tvCancel = view.findViewById(R.id.tv_cancel);
         TextView tvConfirm = view.findViewById(R.id.tv_confirm);
-        EditText etPcs = view.findViewById(R.id.et_pcs);
+        TextView tvPcs = view.findViewById(R.id.tv_pcs);
 
         tvCancel.setOnClickListener(view1 -> disMissDialog());
 
@@ -49,59 +49,59 @@ public class DialogUtil {
         tv0.setOnClickListener(view13 -> {
             if (!sb.toString().isEmpty()){
                 sb.append(tv0.getText());
-                etPcs.setText(sb.toString());
+                tvPcs.setText(sb.toString());
             }
         });
 
         tv1.setOnClickListener(view14 -> {
             sb.append(tv1.getText());
-            etPcs.setText(sb.toString());
+            tvPcs.setText(sb.toString());
         });
 
         tv2.setOnClickListener(view15 -> {
             sb.append(tv2.getText());
-            etPcs.setText(sb.toString());
+            tvPcs.setText(sb.toString());
         });
 
         tv3.setOnClickListener(view16 -> {
             sb.append(tv3.getText());
-            etPcs.setText(sb.toString());
+            tvPcs.setText(sb.toString());
         });
 
         tv4.setOnClickListener(view17 -> {
             sb.append(tv4.getText());
-            etPcs.setText(sb.toString());
+            tvPcs.setText(sb.toString());
         });
 
         tv5.setOnClickListener(view18 -> {
             sb.append(tv5.getText());
-            etPcs.setText(sb.toString());
+            tvPcs.setText(sb.toString());
         });
 
         tv6.setOnClickListener(view19 -> {
             sb.append(tv6.getText());
-            etPcs.setText(sb.toString());
+            tvPcs.setText(sb.toString());
         });
         tv1.setOnClickListener(view110 -> {
             sb.append(tv1.getText());
-            etPcs.setText(sb.toString());
+            tvPcs.setText(sb.toString());
         });
         tv7.setOnClickListener(view111 -> {
             sb.append(tv7.getText());
-            etPcs.setText(sb.toString());
+            tvPcs.setText(sb.toString());
         });
         tv8.setOnClickListener(view112 -> {
             sb.append(tv8.getText());
-            etPcs.setText(sb.toString());
+            tvPcs.setText(sb.toString());
         });
         tv9.setOnClickListener(view113 -> {
             sb.append(tv9.getText());
-            etPcs.setText(sb.toString());
+            tvPcs.setText(sb.toString());
         });
 
         tvClear.setOnClickListener(view114 -> {
             sb.delete(0,sb.length());
-            etPcs.setText(sb.toString());
+            tvPcs.setText(sb.toString());
         });
 
         dialog.setContentView(view);

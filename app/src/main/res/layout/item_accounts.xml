@@ -31,7 +31,7 @@
         android:id="@+id/tv_weight"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="51dp"
+        android:layout_marginLeft="80dp"
         android:layout_marginTop="4dp"
         android:text="5.58kg"
         android:textColor="#1B202A"
@@ -43,21 +43,20 @@
         android:id="@+id/tv_total"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="31dp"
         android:layout_marginTop="4dp"
+        android:layout_marginRight="40dp"
         android:text="72.82€"
         android:textColor="#1B202A"
         android:textSize="12sp"
-        app:layout_constraintLeft_toRightOf="@+id/tv_weight"
+        app:layout_constraintRight_toLeftOf="@+id/iv_delete"
         app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
     <ImageView
         android:id="@+id/iv_delete"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginLeft="23dp"
         android:src="@drawable/icon_delete"
-        app:layout_constraintLeft_toRightOf="@+id/tv_total"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

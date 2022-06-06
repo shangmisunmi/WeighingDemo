@@ -1,21 +1,17 @@
 package com.sunmi.weighingdemo;
 
+import android.os.Bundle;
+import android.os.RemoteException;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Build;
-import android.os.Bundle;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.TextView;
-
-import java.math.BigDecimal;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
     private int currPosition;
     private double total = 0;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         tvVersion = findViewById(R.id.tv_version);
         tvVersion.setText(getString(R.string.version_name, BuildConfig.VERSION_NAME));
-
 
         rvFruit = findViewById(R.id.rv_fruit);
         rvFruit.setLayoutManager(new GridLayoutManager(this, 5));
@@ -108,14 +102,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void insertAccountData(int position, double weigh) {
-        accountsList.add(new AccountsBean(list.get(position).getName(), list.get(position).getPrice(), weigh, new BigDecimal(list.get(position).getPrice() * weigh).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue(), list.get(position).isWeigh()));
+        accountsList.add(new AccountsBean(list.get(position).getName(), list.get(position).getPrice(), weigh, list.get(position).getPrice() * weigh, list.get(position).isWeigh()));
         accountsAdapter.setData(accountsList);
         changeTotal(list.get(position).getPrice() * weigh);
     }
 
     private void changeTotal(double change) {
         total += change;
-        double resultTotal = new BigDecimal(total).doubleValue();
-        tvTotal.setText(resultTotal + "");
+        tvTotal.setText(String.format(Locale.getDefault(), "%.2f", total));
     }
+
 }

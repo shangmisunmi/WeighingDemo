@@ -52,14 +52,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        android:orientation="horizontal"
-        android:weightSum="3">
+        android:orientation="horizontal">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_fruit"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="5"
             android:fadeScrollbars="true"
             android:overScrollMode="never"
             android:paddingHorizontal="12dp" />
@@ -72,7 +71,7 @@
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -108,7 +107,7 @@
                     android:id="@+id/tv_net_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="47.5dp"
+                    android:layout_marginLeft="100dp"
                     android:layout_marginTop="2dp"
                     android:text="Net/Price"
                     android:textColor="#1B202A"
@@ -120,26 +119,25 @@
                     android:id="@+id/tv_sum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="49.5dp"
                     android:layout_marginTop="2dp"
+                    android:layout_marginRight="40dp"
                     android:text="Sum"
                     android:textColor="#1B202A"
                     android:textSize="10sp"
-                    app:layout_constraintLeft_toRightOf="@+id/tv_net_price"
+                    app:layout_constraintRight_toLeftOf="@+id/tv_reque"
                     app:layout_constraintTop_toBottomOf="@+id/tv_trade_name" />
 
                 <TextView
                     android:id="@+id/tv_reque"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="49.5dp"
                     android:background="@drawable/bg_reque"
                     android:paddingHorizontal="6dp"
                     android:paddingVertical="3dp"
                     android:text="Reque"
                     android:textColor="#1B202A"
                     android:textSize="10sp"
-                    app:layout_constraintLeft_toRightOf="@+id/tv_sum"
+                    app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_trade_name" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,8 @@
     <string name="app_name">WeighingDemo</string>
     <string name="title">Sunmi Weighing Demo</string>
     <string name="version_name">Version：%s</string>
+    <string name="total_price">Total Price:(€)</string>
+    <string name="money_unit">€</string>
     <string name="price">€ %.2f</string>
     <string name="apple">Apple</string>
     <string name="pear">Pear</string>
@@ -21,4 +23,23 @@
     <string name="beetroot">Beetroot</string>
     <string name="cassava">Cassava</string>
     <string name="artichoke">Artichoke</string>
+
+    <string name="print_title">XXX fruit store</string>
+    <string name="print_cashier">Cashier：ClerkA</string>
+    <string name="print_address">Brand：0008</string>
+    <string name="print_receipt">Doc No.：</string>
+    <string name="print_time">Printing time：</string>
+    <string name="print_name">Trade name</string>
+    <string name="print_price">Unit price</string>
+    <string name="print_pcs">Pcs/kg</string>
+    <string name="print_subtotal">Subtotal</string>
+    <string name="print_original_price">Original price：%s</string>
+    <string name="print_total">Total amount：</string>
+    <string name="print_current_price">Current price：%s</string>
+    <string name="print_pay">Paymet：</string>
+    <string name="print_received">Paid in：%s</string>
+    <string name="print_change">Change：0.00€</string>
+    <string name="print_remark">remarks:</string>
+    <string name="print_null">Nothing</string>
+
 </resources>

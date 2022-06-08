@@ -1,4 +1,4 @@
-package com.sunmi.weighingdemo;
+package com.sunmi.weighingdemo.util;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.sunmi.weighingdemo.R;
 
 public class DialogUtil {
 
@@ -117,7 +119,7 @@ public class DialogUtil {
         }
     }
 
-    interface onClickListener {
+    public interface onClickListener {
         void confirm(int pcs);
     }
 }

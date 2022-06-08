@@ -1,4 +1,4 @@
-package com.sunmi.weighingdemo;
+package com.sunmi.weighingdemo.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+
+import com.sunmi.weighingdemo.R;
+import com.sunmi.weighingdemo.bean.AccountsBean;
 
 import java.util.List;
 import java.util.Locale;
@@ -35,15 +38,9 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.MyHold
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
         holder.tvName.setText(list.get(position).getName());
-        holder.tvPrice.setText(list.get(position).getPrice() + "€/kg");
-        String weigh = String.format(Locale.getDefault(), "%.2f", list.get(position).getWeigh());
-        if (list.get(position).isWeigh()) {
-            holder.tvWeigh.setText(weigh + "kg");
-        } else {
-            holder.tvWeigh.setText(weigh + "pcs");
-        }
-        holder.tvTotal.setText(String.format(Locale.getDefault(), "%.2f", list.get(position).getTotal()) + "€");
-
+        holder.tvPrice.setText(list.get(position).getPrice() + context.getString(R.string.money_unit) + "/" + list.get(position).getPriceUnit());
+        holder.tvWeigh.setText(list.get(position).getWeigh() + list.get(position).getPriceUnit());
+        holder.tvTotal.setText(list.get(position).getTotal() + context.getString(R.string.money_unit));
         holder.ivDelete.setOnClickListener(view -> listener.delete(position));
     }
 
@@ -82,7 +79,7 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.MyHold
         this.listener = listener;
     }
 
-    interface OnClickListener {
+    public interface OnClickListener {
         void delete(int position);
     }
 }

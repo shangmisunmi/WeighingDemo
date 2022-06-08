@@ -1,0 +1,46 @@
+<resources>
+
+    <string name="app_name">WeighingDemo</string>
+    <string name="title">Sunmi Weighing Demo</string>
+    <string name="version_name">Version：%s</string>
+    <string name="total_price">Total Price:(¥)</string>
+    <string name="money_unit">¥</string>
+    <string name="price">¥ %.2f</string>
+    <string name="apple">苹果</string>
+    <string name="pear">梨</string>
+    <string name="persimmon">柿子</string>
+    <string name="pomegranate">石榴</string>
+    <string name="cherry">樱桃</string>
+    <string name="orange">橙子</string>
+    <string name="banana">香蕉</string>
+    <string name="blueberry">蓝莓</string>
+    <string name="pitaya">火龙果</string>
+    <string name="lichee">荔枝</string>
+    <string name="watermelon">西瓜</string>
+    <string name="honeydew">哈密瓜</string>
+    <string name="scallions">大葱</string>
+    <string name="endive">苦白菜</string>
+    <string name="beet_leaves">甜菜页</string>
+    <string name="beetroot">甜菜根</string>
+    <string name="cassava">木薯</string>
+    <string name="artichoke">洋蓟</string>
+
+    <string name="print_title">XXX水果专卖店</string>
+    <string name="print_cashier">收银员：店员</string>
+    <string name="print_address">牌号：0008</string>
+    <string name="print_receipt">单据号：</string>
+    <string name="print_time">打印时间：</string>
+    <string name="print_name">商品名称</string>
+    <string name="print_price">单价</string>
+    <string name="print_pcs">数量/重量</string>
+    <string name="print_subtotal">小计</string>
+    <string name="print_original_price">原价：%s</string>
+    <string name="print_total">总数：%d</string>
+    <string name="print_current_price">现价：%s</string>
+    <string name="print_pay">支付：现金</string>
+    <string name="print_received">实收：%s</string>
+    <string name="print_change">找零：0.00¥</string>
+    <string name="print_remark">备注信息</string>
+    <string name="print_null">无</string>
+
+</resources>

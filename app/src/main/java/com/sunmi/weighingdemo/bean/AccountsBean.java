@@ -1,16 +1,18 @@
-package com.sunmi.weighingdemo;
+package com.sunmi.weighingdemo.bean;
 
 public class AccountsBean {
 
     private String name;
     private double price;
+    private String priceUnit;
     private double weigh;
     private double total;
     private boolean isWeigh;
 
-    public AccountsBean(String name, double price, double weigh, double total, boolean isWeigh) {
+    public AccountsBean(String name, double price, String priceUnit, double weigh, double total, boolean isWeigh) {
         this.name = name;
         this.price = price;
+        this.priceUnit = priceUnit;
         this.weigh = weigh;
         this.total = total;
         this.isWeigh = isWeigh;
@@ -30,6 +32,14 @@ public class AccountsBean {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getPriceUnit() {
+        return priceUnit;
+    }
+
+    public void setPriceUnit(String priceUnit) {
+        this.priceUnit = priceUnit;
     }
 
     public double getWeigh() {

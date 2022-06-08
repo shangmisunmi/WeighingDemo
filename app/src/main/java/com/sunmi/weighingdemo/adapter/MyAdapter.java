@@ -1,9 +1,8 @@
-package com.sunmi.weighingdemo;
+package com.sunmi.weighingdemo.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.sunmi.weighingdemo.R;
+import com.sunmi.weighingdemo.bean.FruitBean;
 
 import java.util.List;
 
@@ -96,7 +97,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
         this.listener = listener;
     }
 
-    interface OnItemClickListener {
+    public interface OnItemClickListener {
         void onClick(int position);
     }
 }

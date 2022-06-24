@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="112dp"
+        android:layout_height="@dimen/sunmi_224px"
         android:background="#494D55"
         android:gravity="center_vertical"
         android:orientation="horizontal">
@@ -56,9 +56,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_fruit"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/sunmi_1428px"
             android:layout_height="match_parent"
-            android:layout_weight="5"
             android:fadeScrollbars="true"
             android:overScrollMode="never"
             android:paddingHorizontal="12dp" />
@@ -69,9 +68,8 @@
             android:background="#D1D2D4" />
 
         <RelativeLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="2"
             android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout

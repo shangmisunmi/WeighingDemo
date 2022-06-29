@@ -1,15 +1,26 @@
 package com.sunmi.weighingdemo;
 
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.RemoteException;
 import android.util.Log;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sunmi.peripheral.printer.SunmiPrinterService;
+import com.sunmi.scaledisplay.SaasResult;
+import com.sunmi.scaledisplay.SaasService;
 import com.sunmi.weighingdemo.adapter.AccountsAdapter;
 import com.sunmi.weighingdemo.adapter.MyAdapter;
 import com.sunmi.weighingdemo.bean.AccountsBean;
@@ -39,12 +50,42 @@ public class MainActivity extends AppCompatActivity {
     private int currPosition;
     private double total = 0;
 
+    /**
+     * 电子秤服务
+     */
+    private SaasService saasService;
+
+    private String TAG = "MainActivity";
+
+
+    private Handler handler = new Handler();
+
+    private ServiceConnection connection = new ServiceConnection() {
+
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            saasService = SaasService.Stub.asInterface(iBinder);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+            saasService = null;
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
         initData();
+        bindService();
+    }
+
+    private void bindService() {
+        Intent intent = new Intent("ACTION_SCALE_SERVICE");
+        intent.setPackage("com.sunmi.scaledisplay");
+        bindService(intent, connection, Context.BIND_AUTO_CREATE);
     }
 
     private void initView() {
@@ -58,12 +99,12 @@ public class MainActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(position -> {
             currPosition = position;
             adapter.setPosition(currPosition, true);
+            if (list.get(position).isWeigh()) {
+                getWeigh(list.get(position).getPriceUnit(), list.get(position).getPrice(), position);
+            } else {
+                showPcsDialog(currPosition);
+            }
 
-//            if (list.get(position).isWeigh()) {
-//
-//            } else {
-            showPcsDialog(currPosition);
-//            }
         });
 
         rvSettleAccounts = findViewById(R.id.rv_settle_accounts);
@@ -87,7 +128,59 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showPcsDialog(int position) {
-        DialogUtil.showDialog(this, pcs -> insertAccountData(position, pcs));
+        DialogUtil.showDialog(this, pcs -> {
+            try {
+                saasService.requestPriceByAmount(list.get(position).getPrice(), pcs, new SaasResult.Stub() {
+                    @Override
+                    public void priceResult(boolean isAvailable, int value, double totalPrice) throws RemoteException {
+                        Log.i(TAG, "requestPriceByAmount--->isAvailable-->" + isAvailable + " value--->" + value + " ---- totalPrice--->" + totalPrice);
+                        if (isAvailable) {
+                            handler.post(() -> {
+                                insertAccountData(position, value, totalPrice);
+                            });
+                        }
+                    }
+                });
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    private void getWeigh(String unit, double price, int position) {
+        if (unit.equals("/kg")) {
+            try {
+                saasService.requestPriceByKGram(price, 0, new SaasResult.Stub() {
+                    @Override
+                    public void priceResult(boolean isAvailable, int value, double totalPrice) throws RemoteException {
+                        Log.i(TAG, "requestPriceByKGram--->isAvailable-->" + isAvailable + " value--->" + value + " ---- totalPrice--->" + totalPrice);
+                        if (isAvailable) {
+                            handler.post(() -> {
+                                insertAccountData(position, value, totalPrice);
+                            });
+                        }
+                    }
+                });
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        } else {
+            try {
+                saasService.requestPriceByHGram(price, 0, new SaasResult.Stub() {
+                    @Override
+                    public void priceResult(boolean isAvailable, int value, double totalPrice) throws RemoteException {
+                        Log.i(TAG, "requestPriceByHGram--->isAvailable-->" + isAvailable + " value--->" + value + " ---- totalPrice--->" + totalPrice);
+                        if (isAvailable) {
+                            handler.post(() -> {
+                                insertAccountData(position, value, totalPrice);
+                            });
+                        }
+                    }
+                });
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void initData() {
@@ -112,10 +205,10 @@ public class MainActivity extends AppCompatActivity {
         adapter.setData(list);
     }
 
-    private void insertAccountData(int position, double weigh) {
-        accountsList.add(new AccountsBean(list.get(position).getName(), list.get(position).getPrice(), list.get(position).getPriceUnit(), weigh, Double.parseDouble(String.format("%.2f", list.get(position).getPrice() * weigh)), list.get(position).isWeigh()));
+    private void insertAccountData(int position, double weigh, double total) {
+        accountsList.add(new AccountsBean(list.get(position).getName(), list.get(position).getPrice(), list.get(position).getPriceUnit(), weigh, total, list.get(position).isWeigh()));
         accountsAdapter.setData(accountsList);
-        changeTotal(list.get(position).getPrice() * weigh);
+        changeTotal(total);
     }
 
     private void changeTotal(double change) {
@@ -128,12 +221,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void printInfo() {
         try {
-            int printerPaper = PrintUtils.getInstance().getPrinterPaper(this);
-            String line = "--------------------------------";
+            String line = "-----------------------------";
             SunmiPrinterService printer = PrintUtils.getInstance().getPrinter(this);
             if (printer != null) {
                 printer.printerInit(null);
-                printer.sendRAWData(new byte[]{0x1b, 0x61, 0x01}, null);
+                printer.setFontSize(25f,null);
                 printer.printText(getString(R.string.print_title) + "\n\n", null);
                 printer.printColumnsString(new String[]{getString(R.string.print_cashier), getString(R.string.print_address)}, new int[]{1, 1}, new int[]{0, 2}, null);
                 printer.printColumnsString(new String[]{getString(R.string.print_receipt), "20220408123649186001"}, new int[]{1, 2}, new int[]{0, 2}, null);
@@ -141,9 +233,9 @@ public class MainActivity extends AppCompatActivity {
                 String time = TimeUtils.formatDate(timeMillis, TimeUtils.FORMAT_TIME_ALL);
                 printer.printColumnsString(new String[]{getString(R.string.print_time), time}, new int[]{1, 2}, new int[]{0, 2}, null);
                 printer.printText("\n" + line + "\n", null);
-                printer.printColumnsString(new String[]{getString(R.string.print_name), getString(R.string.print_price), getString(R.string.print_pcs), getString(R.string.print_subtotal)}, new int[]{2, 1, 2, 2}, new int[]{0, 1, 1, 2}, null);
+                printer.printColumnsString(new String[]{getString(R.string.print_name), getString(R.string.print_price), getString(R.string.print_pcs), getString(R.string.print_subtotal)}, new int[]{2, 1, 2, 1}, new int[]{0, 1, 1, 1}, null);
                 for (int i = 0; i < accountsList.size(); i++) {
-                    printer.printColumnsString(new String[]{accountsList.get(i).getName(), accountsList.get(i).getPrice() + getString(R.string.money_unit) + "/" + accountsList.get(i).getPriceUnit(), accountsList.get(i).getWeigh() + accountsList.get(i).getPriceUnit(), accountsList.get(i).getTotal() + getString(R.string.money_unit)}, new int[]{1, 2, 2, 2}, new int[]{0, 1, 1, 2}, null);
+                    printer.printColumnsString(new String[]{accountsList.get(i).getName(), accountsList.get(i).getPrice() + getString(R.string.money_unit) + "/" + accountsList.get(i).getPriceUnit(), accountsList.get(i).getWeigh() + accountsList.get(i).getPriceUnit(), accountsList.get(i).getTotal() + getString(R.string.money_unit)}, new int[]{2, 2, 2, 2}, new int[]{1, 1, 2, 2}, null);
                 }
                 printer.printText(line + "\n", null);
                 printer.printColumnsString(new String[]{getString(R.string.print_original_price, tvTotal.getText().toString() + getString(R.string.money_unit)), getString(R.string.print_total, accountsList.size())}, new int[]{1, 1}, new int[]{0, 2}, null);
@@ -157,6 +249,15 @@ public class MainActivity extends AppCompatActivity {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (connection != null) {
+            unbindService(connection);
+            connection = null;
         }
     }
 }

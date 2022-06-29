@@ -130,6 +130,10 @@ public class MainActivity extends AppCompatActivity {
     private void showPcsDialog(int position) {
         DialogUtil.showDialog(this, pcs -> {
             try {
+                if (saasService == null) {
+                    Log.i(TAG, "服务未连接--->saasService==null");
+                    return;
+                }
                 saasService.requestPriceByAmount(list.get(position).getPrice(), pcs, new SaasResult.Stub() {
                     @Override
                     public void priceResult(boolean isAvailable, int value, double totalPrice) throws RemoteException {
@@ -148,6 +152,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getWeigh(String unit, double price, int position) {
+        if (saasService == null) {
+            Log.i(TAG, "服务未连接--->saasService==null");
+            return;
+        }
         if (unit.equals("/kg")) {
             try {
                 saasService.requestPriceByKGram(price, 0, new SaasResult.Stub() {
@@ -225,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
             SunmiPrinterService printer = PrintUtils.getInstance().getPrinter(this);
             if (printer != null) {
                 printer.printerInit(null);
-                printer.setFontSize(25f,null);
+                printer.setFontSize(25f, null);
                 printer.printText(getString(R.string.print_title) + "\n\n", null);
                 printer.printColumnsString(new String[]{getString(R.string.print_cashier), getString(R.string.print_address)}, new int[]{1, 1}, new int[]{0, 2}, null);
                 printer.printColumnsString(new String[]{getString(R.string.print_receipt), "20220408123649186001"}, new int[]{1, 2}, new int[]{0, 2}, null);

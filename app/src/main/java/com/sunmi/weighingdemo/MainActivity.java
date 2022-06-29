@@ -10,6 +10,7 @@ import android.os.IBinder;
 import android.os.Message;
 import android.os.RemoteException;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -29,6 +30,7 @@ import com.sunmi.weighingdemo.util.DialogUtil;
 import com.sunmi.weighingdemo.util.PrintUtils;
 import com.sunmi.weighingdemo.util.TimeUtils;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -49,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
 
     private int currPosition;
     private double total = 0;
+
+    private TextView tvReque;
 
     /**
      * 电子秤服务
@@ -89,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        tvReque = findViewById(R.id.tv_reque);
         tvVersion = findViewById(R.id.tv_version);
         tvVersion.setText(getString(R.string.version_name, BuildConfig.VERSION_NAME));
 
@@ -118,13 +123,17 @@ public class MainActivity extends AppCompatActivity {
             accountsAdapter.notifyDataSetChanged();
         });
 
+
         tvTotal = findViewById(R.id.tv_total);
         tvSettlement = findViewById(R.id.tv_settlement);
         tvSettlement.setOnClickListener(view -> {
             if (!accountsList.isEmpty()) {
                 new Thread(this::printInfo).start();
+                clearSettle();
             }
         });
+
+        tvReque.setOnClickListener(view -> clearSettle());
     }
 
     private void showPcsDialog(int position) {
@@ -164,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.i(TAG, "requestPriceByKGram--->isAvailable-->" + isAvailable + " value--->" + value + " ---- totalPrice--->" + totalPrice);
                         if (isAvailable) {
                             handler.post(() -> {
-                                insertAccountData(position, value, totalPrice);
+                                insertAccountData(position, new BigDecimal( Double.parseDouble(String.valueOf(value)) / 1000).setScale(3, BigDecimal.ROUND_HALF_UP).doubleValue(), totalPrice);
                             });
                         }
                     }
@@ -180,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.i(TAG, "requestPriceByHGram--->isAvailable-->" + isAvailable + " value--->" + value + " ---- totalPrice--->" + totalPrice);
                         if (isAvailable) {
                             handler.post(() -> {
-                                insertAccountData(position, value, totalPrice);
+                                insertAccountData(position, new BigDecimal(Double.parseDouble(String.valueOf(value)) / 1000).setScale(3, BigDecimal.ROUND_HALF_UP).doubleValue(), totalPrice);
                             });
                         }
                     }
@@ -234,9 +243,10 @@ public class MainActivity extends AppCompatActivity {
             if (printer != null) {
                 printer.printerInit(null);
                 printer.setFontSize(25f, null);
+                printer.sendRAWData(new byte[]{0x1b, 0x61, 0x01}, null);
                 printer.printText(getString(R.string.print_title) + "\n\n", null);
                 printer.printColumnsString(new String[]{getString(R.string.print_cashier), getString(R.string.print_address)}, new int[]{1, 1}, new int[]{0, 2}, null);
-                printer.printColumnsString(new String[]{getString(R.string.print_receipt), "20220408123649186001"}, new int[]{1, 2}, new int[]{0, 2}, null);
+                printer.printColumnsString(new String[]{getString(R.string.print_receipt), "20220408123649186001"}, new int[]{2, 5}, new int[]{0, 2}, null);
                 long timeMillis = System.currentTimeMillis();
                 String time = TimeUtils.formatDate(timeMillis, TimeUtils.FORMAT_TIME_ALL);
                 printer.printColumnsString(new String[]{getString(R.string.print_time), time}, new int[]{1, 2}, new int[]{0, 2}, null);
@@ -258,6 +268,11 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void clearSettle() {
+        accountsList.clear();
+        accountsAdapter.setData(accountsList);
     }
 
     @Override

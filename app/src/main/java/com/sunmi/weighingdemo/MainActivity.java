@@ -273,6 +273,7 @@ public class MainActivity extends AppCompatActivity {
     private void clearSettle() {
         accountsList.clear();
         accountsAdapter.setData(accountsList);
+        changeTotal(total * -1);
     }
 
     @Override

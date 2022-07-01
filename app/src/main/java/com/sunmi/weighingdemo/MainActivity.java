@@ -4,12 +4,14 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.hardware.display.DisplayManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.RemoteException;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.widget.TextView;
 
@@ -93,6 +95,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        DisplayManager displayManager = (DisplayManager) getSystemService(Context.DISPLAY_SERVICE);
+        Display[] displays = displayManager.getDisplays(DisplayManager.DISPLAY_CATEGORY_PRESENTATION);
+        WeighPresentation presentation = new WeighPresentation(this, displays[0]);
+        if (presentation != null){
+            presentation.show();
+        }
+
         tvReque = findViewById(R.id.tv_reque);
         tvVersion = findViewById(R.id.tv_version);
         tvVersion.setText(getString(R.string.version_name, BuildConfig.VERSION_NAME));
@@ -173,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.i(TAG, "requestPriceByKGram--->isAvailable-->" + isAvailable + " value--->" + value + " ---- totalPrice--->" + totalPrice);
                         if (isAvailable) {
                             handler.post(() -> {
-                                insertAccountData(position, new BigDecimal( Double.parseDouble(String.valueOf(value)) / 1000).setScale(3, BigDecimal.ROUND_HALF_UP).doubleValue(), totalPrice);
+                                insertAccountData(position, new BigDecimal(Double.parseDouble(String.valueOf(value)) / 1000).setScale(3, BigDecimal.ROUND_HALF_UP).doubleValue(), totalPrice);
                             });
                         }
                     }

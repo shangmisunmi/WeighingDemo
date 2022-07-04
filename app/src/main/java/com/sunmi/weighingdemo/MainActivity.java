@@ -138,7 +138,6 @@ public class MainActivity extends AppCompatActivity {
         tvSettlement.setOnClickListener(view -> {
             if (!accountsList.isEmpty()) {
                 new Thread(this::printInfo).start();
-                clearSettle();
             }
         });
 
@@ -247,8 +246,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void printInfo() {
         try {
-            String line = "-----------------------------";
             SunmiPrinterService printer = PrintUtils.getInstance().getPrinter(this);
+            String line = "-----------------------------\n";
+            if (printer.getPrinterPaper() != 1) {
+                line = "--------------------------------------------\n";
+            }
             if (printer != null) {
                 printer.printerInit(null);
                 printer.setFontSize(25f, null);
@@ -259,20 +261,26 @@ public class MainActivity extends AppCompatActivity {
                 long timeMillis = System.currentTimeMillis();
                 String time = TimeUtils.formatDate(timeMillis, TimeUtils.FORMAT_TIME_ALL);
                 printer.printColumnsString(new String[]{getString(R.string.print_time), time}, new int[]{1, 2}, new int[]{0, 2}, null);
-                printer.printText("\n" + line + "\n", null);
+                printer.printText("\n" + line, null);
                 printer.printColumnsString(new String[]{getString(R.string.print_name), getString(R.string.print_price), getString(R.string.print_pcs), getString(R.string.print_subtotal)}, new int[]{2, 1, 2, 1}, new int[]{0, 1, 1, 1}, null);
                 for (int i = 0; i < accountsList.size(); i++) {
-                    printer.printColumnsString(new String[]{accountsList.get(i).getName(), accountsList.get(i).getPrice() + getString(R.string.money_unit) + "/" + accountsList.get(i).getPriceUnit(), accountsList.get(i).getWeigh() + accountsList.get(i).getPriceUnit(), accountsList.get(i).getTotal() + getString(R.string.money_unit)}, new int[]{2, 2, 2, 2}, new int[]{1, 1, 2, 2}, null);
+                    if (accountsList.get(i).isWeigh()) {
+                        printer.printColumnsString(new String[]{accountsList.get(i).getName(), accountsList.get(i).getPrice() + getString(R.string.money_unit) + "/" + accountsList.get(i).getPriceUnit(), accountsList.get(i).getWeigh() + "kg", accountsList.get(i).getTotal() + getString(R.string.money_unit)}, new int[]{2, 2, 2, 2}, new int[]{0, 1, 2, 2}, null);
+                    } else {
+                        printer.printColumnsString(new String[]{accountsList.get(i).getName(), accountsList.get(i).getPrice() + getString(R.string.money_unit) + "/" + accountsList.get(i).getPriceUnit(), accountsList.get(i).getWeigh() + accountsList.get(i).getPriceUnit(), accountsList.get(i).getTotal() + getString(R.string.money_unit)}, new int[]{2, 2, 2, 2}, new int[]{0, 1, 2, 2}, null);
+                    }
                 }
-                printer.printText(line + "\n", null);
+                printer.printText("\n" + line, null);
                 printer.printColumnsString(new String[]{getString(R.string.print_original_price, tvTotal.getText().toString() + getString(R.string.money_unit)), getString(R.string.print_total, accountsList.size())}, new int[]{1, 1}, new int[]{0, 2}, null);
                 printer.printColumnsString(new String[]{getString(R.string.print_current_price, tvTotal.getText().toString() + getString(R.string.money_unit)), getString(R.string.print_pay)}, new int[]{1, 1}, new int[]{0, 2}, null);
                 printer.printColumnsString(new String[]{getString(R.string.print_received, tvTotal.getText().toString() + getString(R.string.money_unit)), getString(R.string.print_change)}, new int[]{1, 1}, new int[]{0, 2}, null);
-                printer.printText(line + "\n", null);
+                printer.printText("\n" + line, null);
                 printer.printColumnsString(new String[]{getString(R.string.print_remark)}, new int[]{1}, new int[]{0}, null);
                 printer.printColumnsString(new String[]{getString(R.string.print_null)}, new int[]{1}, new int[]{0}, null);
                 printer.lineWrap(5, null);
                 printer.cutPaper(null);
+
+                handler.post(() -> clearSettle());
             }
         } catch (Exception e) {
             e.printStackTrace();

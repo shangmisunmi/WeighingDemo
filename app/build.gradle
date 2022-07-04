@@ -15,6 +15,19 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        sunmi {
+            storeFile file('../sunmi.keystore')
+            storePassword "sunmi388"
+            keyAlias "Sunmi"
+            keyPassword "sunmi388"
+            v1SigningEnabled true
+            v2SigningEnabled true
+            enableV3Signing = true
+            enableV4Signing = true
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false

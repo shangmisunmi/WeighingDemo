@@ -179,7 +179,6 @@
     <dimen name="sunmi_328px">218.67dp</dimen>
     <dimen name="sunmi_330px">220.0dp</dimen>
     <dimen name="sunmi_333px">222.0dp</dimen>
-    <dimen name="sunmi_326px">217.33dp</dimen>
     <dimen name="sunmi_336px">224dp</dimen>
     <dimen name="sunmi_340px">226.67dp</dimen>
     <dimen name="sunmi_342px">228.0dp</dimen>
@@ -243,13 +242,13 @@
     <dimen name="sunmi_996px">664dp</dimen>
     <dimen name="sunmi_1024px">682.67dp</dimen>
     <dimen name="sunmi_1046px">697.33dp</dimen>
+    <dimen name="sunmi_1072px">714.67dp</dimen>
     <dimen name="sunmi_1094px">729.33dp</dimen>
     <dimen name="sunmi_1130px">753.33dp</dimen>
     <dimen name="sunmi_1132px">754.67dp</dimen>
     <dimen name="sunmi_1200px">800.0dp</dimen>
     <dimen name="sunmi_1280px">853.33dp</dimen>
-    <dimen name="sunmi_1072px">714.67dp</dimen>
-    <dimen name="sunmi_1428px">952dp</dimen>
+    <dimen name="sunmi_1428px">1023dp</dimen>
 
     <dimen name="sunmi_12ps">8.0sp</dimen>
     <dimen name="sunmi_14ps">9.33sp</dimen>
@@ -272,224 +271,8 @@
     <dimen name="sunmi_60ps">40sp</dimen>
     <dimen name="sunmi_64ps">42.67sp</dimen>
     <dimen name="sunmi_70ps">46.67sp</dimen>
-    <dimen name="sunmi_72ps">48sp</dimen>
     <dimen name="sunmi_80ps">53.33sp</dimen>
     <dimen name="sunmi_88ps">58.66sp</dimen>
 
 
-    <dimen name="lhome_title_tv_marginstart">26.0dp</dimen>
-    <dimen name="lhome_title_tv_margintop">39.33dp</dimen>
-    <dimen name="lhome_title_tv_size">21.33sp</dimen>
-    <dimen name="lhome_rv_width">210.67dp</dimen>
-    <dimen name="lhome_rv_marginstart">21.33dp</dimen>
-    <dimen name="lhome_rv_margintop">25.33dp</dimen>
-    <dimen name="lhome_rv_marginbottom">10.67dp</dimen>
-    <dimen name="lhome_frame_marginstart">34.67dp</dimen>
-    <dimen name="lhome_frame_margintop">34.67dp</dimen>
-    <dimen name="lhome_frame_marginend">26.67dp</dimen>
-    <dimen name="lhome_frame_marginbottome">10.67dp</dimen>
-    <dimen name="lhome_list_icon_size">32.0dp</dimen>
-    <dimen name="lhome_list_icon_marginstart">22.0dp</dimen>
-    <dimen name="lhome_list_des_marginstart">16.0dp</dimen>
-    <dimen name="lhome_list_des_size">16.0sp</dimen>
-    <dimen name="lhome_list_item_bg">8.0dp</dimen>
-    <dimen name="lhome_list_item_height">61.33dp</dimen>
-    <dimen name="lhome_frame_bg">16.0dp</dimen>
-
-    <!-- 台式default界面 -->
-    <dimen name="ldefaule_settings">72.0dp</dimen>
-    <dimen name="ldefaule_settings_margintop">6.67dp</dimen>
-    <dimen name="ldefaule_settings_padding">20.0dp</dimen>
-    <dimen name="ldefault_common_marginstart">56.67dp</dimen>
-    <dimen name="ldefault_tvone_margintop">66dp</dimen>
-    <dimen name="ldefault_tvone_size">46.67sp</dimen>
-    <dimen name="ldefault_tvtwo_margintop">13.33dp</dimen>
-    <dimen name="ldefault_tvtwo_size">18.67sp</dimen>
-    <dimen name="ldefault_tvthree_size">18.67sp</dimen>
-    <dimen name="ldefault_tvsix_margintop">42.67dp</dimen>
-    <dimen name="ldefault_tvsix_size">16.0sp</dimen>
-    <dimen name="ldefault_tvseven_margintop">6dp</dimen>
-    <dimen name="ldefault_tvseven_size">26.67sp</dimen>
-    <dimen name="ldefault_tveight_marginstart">7.33dp</dimen>
-    <dimen name="ldefault_tveight_margintop">6dp</dimen>
-    <dimen name="ldefault_tveight_size">21.33sp</dimen>
-    <dimen name="ldefault_tvtwelve_marginstart">7.33dp</dimen>
-    <dimen name="ldefault_tvtwelve_margintop">6dp</dimen>
-    <dimen name="ldefault_tvtwelve_size">26.67sp</dimen>
-    <dimen name="ldefault_pbone_width">178.67dp</dimen>
-    <dimen name="ldefault_pbone_height">5.33dp</dimen>
-    <dimen name="ldefault_pbone_margintop">10.67dp</dimen>
-    <dimen name="ldefault_tvnine_margintop">25.33dp</dimen>
-    <dimen name="ldefault_tvnine_szie">16sp</dimen>
-    <dimen name="ldefault_tvten_margintop">6dp</dimen>
-    <dimen name="ldefault_tvten_size">26.67sp</dimen>
-    <dimen name="ldefault_tvelven_marginstart">7.33dp</dimen>
-    <dimen name="ldefault_tvelven_margintop">6dp</dimen>
-    <dimen name="ldefault_tvelven_size">26.67sp</dimen>
-    <dimen name="ldefault_tvthirteen_witdh">200dp</dimen>
-    <dimen name="ldefault_tvthirteen_height">74.67dp</dimen>
-    <dimen name="ldefault_tvthirteen_margintop">93.33dp</dimen>
-    <dimen name="ldefault_tvthirteen_padding">10.67dp</dimen>
-    <dimen name="ldefault_tvthirteen_size">20sp</dimen>
-    <dimen name="ldefault_tvfourteen_marginstart">16dp</dimen>
-
-    <!--title -->
-    <dimen name="lcommon_title_size">21.33sp</dimen>
-    <dimen name="lcommon_title_height">64.67dp</dimen>
-    <dimen name="lcommon_title_padding_height">64.67dp</dimen>
-    <dimen name="lcommon_title_iconback_width">58.67dp</dimen>
-    <dimen name="lcommon_title_iconback_height">32.0dp</dimen>
-    <dimen name="lcommon_title_iconback_padding">13.33dp</dimen>
-
-    <dimen name="lcommon_head_iconback_size">74.67dp</dimen>
-    <dimen name="lcommon_head_marginstart">33.33dp</dimen>
-    <dimen name="lcommon_head_icon_padding">26.67dp</dimen>
-    <dimen name="lcommon_head_title_height">74.67dp</dimen>
-    <dimen name="lcommon_head_title_size">18.67sp</dimen>
-    <dimen name="lcommon_head_marginhorizal">60.0dp</dimen>
-
-    <!-- 检测界面 -->
-    <dimen name="ldetect_dashborad_height">346.67dp</dimen>
-    <dimen name="ldetect_dashborad_marginstart">48.0dp</dimen>
-    <dimen name="ldetect_dashborad_margintop">35.33dp</dimen>
-    <dimen name="ldetect_btnstart_marginstart">93.33dp</dimen>
-    <dimen name="ldetect_btnstart_margintop">48.0dp</dimen>
-    <dimen name="ldetect_btnstart_widht">206.67dp</dimen>
-    <dimen name="ldetect_btnstart_height">74.67dp</dimen>
-    <dimen name="ldetect_btnstart_drawablepadding">6.67dp</dimen>
-    <dimen name="ldetect_btnstart_textsize">18.67sp</dimen>
-    <dimen name="ldetect_btnreport_marginstart">16.0dp</dimen>
-    <dimen name="ldetect_des_marginstart">48.0dp</dimen>
-    <dimen name="ldetect_des_margintop">58.67dp</dimen>
-    <dimen name="ldetect_des_textsize">16.0sp</dimen>
-    <dimen name="ldetect_line_maginstart">48.0dp</dimen>
-    <dimen name="ldetect_line_magintop">18.0dp</dimen>
-    <dimen name="ldetect_line_maginend">91.33dp</dimen>
-    <dimen name="ldetect_rv_marginbottom">10.67dp</dimen>
-
-    <dimen name="ldetect_item_height">88dp</dimen>
-    <dimen name="ldetect_item_icon_size">48.0dp</dimen>
-    <dimen name="ldetect_item_des_marginstart">16.0dp</dimen>
-    <dimen name="ldetect_item_des_textsize">18.67sp</dimen>
-    <dimen name="ldetect_item_status_textsize">16.0sp</dimen>
-    <dimen name="ldetect_dashboard_viewpage_margintop">109.33dp</dimen>
-    <dimen name="ldetect_dashborad_index_marginbottom">80.0dp</dimen>
-    <dimen name="ldetect_dashborad_index_textsize">16.0sp</dimen>
-    <dimen name="ldetect_dashboard_status_textsize">53.33sp</dimen>
-    <dimen name="ldetect_dashboard_status_des_textsize">20.0sp</dimen>
-    <dimen name="ldetect_dashboard_status_lasttime_textsize">12.0sp</dimen>
-
-    <!--关于本机 -->
-    <dimen name="ldevice_marginbottom">21.33dp</dimen>
-    <dimen name="ldevice_title_height">56.0dp</dimen>
-    <dimen name="ldevice_common_marginstart">60.0dp</dimen>
-    <dimen name="ldevice_title_textsize">16.0sp</dimen>
-    <dimen name="ldevice_item_height">68.67dp</dimen>
-    <dimen name="ldevice_item_textsize">18.67sp</dimen>
-    <dimen name="ldevice_item_content_textsize">16.0sp</dimen>
-
-    <!--圆角背景 -->
-    <dimen name="land_rectangel_arc">8.0dp</dimen>
-    <!-- 公共左侧间距 -->
-    <dimen name="land_common_marginhorizal">60dp</dimen>
-
-    <!--屏幕 -->
-    <dimen name="ldispaly_viewbg_height">133.33dp</dimen>
-    <dimen name="ldisplay_des_marginstart">97.33dp</dimen>
-    <dimen name="ldisplay_des_textsize">18.67sp</dimen>
-    <dimen name="ldisplay_gap_margintop">74.67dp</dimen>
-    <dimen name="ldisplay_seekbar_marginstart">36.67dp</dimen>
-    <dimen name="ldisplay_seekbar_marginend">92dp</dimen>
-    <dimen name="ldisplay_item_height">218.67dp</dimen>
-    <dimen name="ldisplay_item_margintop">16.0dp</dimen>
-    <dimen name="ldisplay_tvone_textsize">21.33sp</dimen>
-    <dimen name="ldisplay_tvone_marginstart">37.33dp</dimen>
-    <dimen name="ldisplay_tvone_margintop">32dp</dimen>
-    <dimen name="ldisplay_tvtwo_margintop">5.33dp</dimen>
-    <dimen name="ldisplay_ivtwo_marginstart">26.67dp</dimen>
-    <dimen name="ldisplay_tvtwo_textsize">16.0sp</dimen>
-    <dimen name="ldisplay_iv_marginend">21.33dp</dimen>
-    <dimen name="ldisplay_tvfour_marginend">18.67dp</dimen>
-
-    <!--麦克风 -->
-    <dimen name="lmic_vidioview_marginstart">70.67dp</dimen>
-    <dimen name="lmic_vidioview_height">240dp</dimen>
-    <dimen name="lmic_vidioview_margintop">44dp</dimen>
-    <dimen name="lmic_tvtime_margintop">40dp</dimen>
-    <dimen name="mic_view_time_textsize">37.33sp</dimen>
-    <dimen name="lmic_ivrecord_margintop">30.67dp</dimen>
-    <dimen name="lmic_ivplay_margintop">45.33dp</dimen>
-    <dimen name="lmic_ivplay_marginend">59.33dp</dimen>
-
-    <!-- 网络 -->
-    <dimen name="lnetwork_dashborad_size">500.0dp</dimen>
-    <dimen name="lnetwork_dashborad_marginhorizal">22.67dp</dimen>
-    <dimen name="lnetwork_dashborad_progresswidth">16dp</dimen>
-    <dimen name="lnetwork_dashborad_radius">129dp</dimen>
-    <dimen name="lnetwork_dashborad_speed_textsize">40sp</dimen>
-    <dimen name="lnetwork_dashborad_unit_textsize">16sp</dimen>
-    <dimen name="lnetwork_dashborad_uint_paddingtop">8dp</dimen>
-    <dimen name="lnetwork_btnstart_width">210.67dp</dimen>
-    <dimen name="lnetwork_btnstart_height">58.67dp</dimen>
-    <dimen name="lnetwork_btnstart_marginstart">154.67dp</dimen>
-    <dimen name="lnetwork_btnstart_margintop">418.67dp</dimen>
-    <dimen name="lnetwork_btnstart_textsize">18.67sp</dimen>
-    <dimen name="lnetwork_tvsignal_marginstart">200dp</dimen>
-    <dimen name="lnetwork_tvsignal_margintop">16dp</dimen>
-    <dimen name="lnetwork_tvsignal_drawablepadding">5.33dp</dimen>
-    <dimen name="lnetwork_tvsignal_textsize">16sp</dimen>
-
-    <dimen name="lnetwork_tv_currentconnection_marginstart">12.67dp</dimen>
-    <dimen name="lnetwork_tv_currentconnection_margintop">104dp</dimen>
-    <dimen name="lnetwork_tv_currentconnection_textsize">16sp</dimen>
-    <dimen name="lnetwork_viewone_width">400.0dp</dimen>
-    <dimen name="lnetwork_viewone_height">129.33dp</dimen>
-    <dimen name="lnetwork_viewone_marginstart">7.33dp</dimen>
-    <dimen name="lnetwork_viewone_marginend">54dp</dimen>
-    <dimen name="lnetwork_viewone_margintop">13.33dp</dimen>
-    <dimen name="lnetwork_llyspeed_marginstart">18.0dp</dimen>
-    <dimen name="lnetwork_llyspeed_top">48.0dp</dimen>
-    <dimen name="lnetwork_tvdownloadspeedresule_top">6.67dp</dimen>
-    <dimen name="lnetwork_tvdownloadspeedresule_end">14.67dp</dimen>
-    <dimen name="lnetwork_tvdownloadspeedresule_textsize">32sp</dimen>
-    <dimen name="lnetwork_llydownloadspeed_end">14.67dp</dimen>
-    <dimen name="lnetwork_tvuploadspeed_end">54dp</dimen>
-    <dimen name="lnetwork_tvdownloadspeed_drawablepadding">2dp</dimen>
-    <dimen name="lnetwork_tvdownloadspeed_textsize">16sp</dimen>
-    <dimen name="lnetwork_tvlan_margintop">53.33dp</dimen>
-    <dimen name="lnetwork_tvlanresult_marginstart">21.33dp</dimen>
-    <dimen name="lnetwork_tvlanresult_margintop">12dp</dimen>
-
-    <!--信号强度 -->
-    <dimen name="lsignal_dashboard_width">426.67dp</dimen>
-    <dimen name="lsignal_dashboard_marginstart">60dp</dimen>
-    <dimen name="lsignal_viewone_height">129.33dp</dimen>
-    <dimen name="lsignal_viewone_marginstart">41.33dp</dimen>
-    <dimen name="lsignal_viewone_marginend">60dp</dimen>
-    <dimen name="lsignal_tvstrenth_textsize">16sp</dimen>
-    <dimen name="lsignal_tvstrenth_result_margintop">5.33dp</dimen>
-    <dimen name="lsignal_tvstrenth_result_textsize">32sp</dimen>
-    <dimen name="lsignal_tvstrenth_unit_textsize">13.33sp</dimen>
-    <dimen name="lsignal_viewdivide_height">80dp</dimen>
-    <dimen name="lsignal_viewdivide_margintop">34.67dp</dimen>
-    <dimen name="lsignal_viewdivide_marginbottom">25.33dp</dimen>
-    <dimen name="lsignal_viewtwo_margintop">16dp</dimen>
-    <dimen name="lsignal_viewtwo_paddingstart">21.33dp</dimen>
-
-    <dimen name="lsignal_dashborad_vertical_margin">37.33dp</dimen>
-
-
-    <!--体检报告 -->
-    <dimen name="lreport_marginhorizontal">240.0dp</dimen>
-    <dimen name="lreport_marginvertical">60dp</dimen>
-    <dimen name="lreport_tvlevel_textsize">26.67sp</dimen>
-    <dimen name="lreport_btntest_marginstart">21.33dp</dimen>
-    <dimen name="lreport_detail_margintop">26.67dp</dimen>
-    <dimen name="lreport_item_iv_size">42.67dp</dimen>
-    <dimen name="lreport_item_height">66.67dp</dimen>
-    <dimen name="lreport_item_tvname_marginstart">21.33dp</dimen>
-    <dimen name="lreport_recycle_margin">40dp</dimen>
-    <dimen name="lreport_empty_margintop">174.67dp</dimen>
-    <dimen name="lreport_empty_btnheight">69.33dp</dimen>
-    <dimen name="lreport_empty_btn_textsize">30sp</dimen>
 </resources>

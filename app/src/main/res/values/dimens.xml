@@ -243,12 +243,13 @@
     <dimen name="sunmi_996px">498dp</dimen>
     <dimen name="sunmi_1024px">512dp</dimen>
     <dimen name="sunmi_1046px">523dp</dimen>
+    <dimen name="sunmi_1072px">536dp</dimen>
     <dimen name="sunmi_1094px">547dp</dimen>
     <dimen name="sunmi_1130px">565dp</dimen>
     <dimen name="sunmi_1132px">566dp</dimen>
     <dimen name="sunmi_1200px">600dp</dimen>
     <dimen name="sunmi_1280px">640dp</dimen>
-    <dimen name="sunmi_1072px">536dp</dimen>
+    <dimen name="sunmi_1428px">952dp</dimen>
 
     <dimen name="sunmi_12ps">6sp</dimen>
     <dimen name="sunmi_14ps">7sp</dimen>

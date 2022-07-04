@@ -97,8 +97,8 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         DisplayManager displayManager = (DisplayManager) getSystemService(Context.DISPLAY_SERVICE);
         Display[] displays = displayManager.getDisplays(DisplayManager.DISPLAY_CATEGORY_PRESENTATION);
-        WeighPresentation presentation = new WeighPresentation(this, displays[0]);
-        if (presentation != null){
+        if (displays != null && displays.length > 0) {
+            WeighPresentation presentation = new WeighPresentation(this, displays[0]);
             presentation.show();
         }
 

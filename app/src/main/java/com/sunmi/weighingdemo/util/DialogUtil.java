@@ -109,7 +109,7 @@ public class DialogUtil {
     }
 
     private static void appendTxt(String num){
-        if (sb != null && sb.length() <= 5){
+        if (sb != null && sb.length() < 5){
             sb.append(num);
         }
     }

@@ -248,7 +248,7 @@
     <dimen name="sunmi_1132px">754.67dp</dimen>
     <dimen name="sunmi_1200px">800.0dp</dimen>
     <dimen name="sunmi_1280px">853.33dp</dimen>
-    <dimen name="sunmi_1428px">1023dp</dimen>
+    <dimen name="sunmi_1428px">952dp</dimen>
 
     <dimen name="sunmi_12ps">8.0sp</dimen>
     <dimen name="sunmi_14ps">9.33sp</dimen>

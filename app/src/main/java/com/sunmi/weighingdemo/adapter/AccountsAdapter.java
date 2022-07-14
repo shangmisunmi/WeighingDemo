@@ -39,7 +39,11 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.MyHold
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
         holder.tvName.setText(list.get(position).getName());
         holder.tvPrice.setText(list.get(position).getPrice() + context.getString(R.string.money_unit) + "/" + list.get(position).getPriceUnit());
-        holder.tvWeigh.setText(list.get(position).getWeigh() + "kg");
+        if (list.get(position).isWeigh()){
+            holder.tvWeigh.setText(list.get(position).getWeigh() + "kg");
+        }else {
+            holder.tvWeigh.setText(list.get(position).getWeigh() + "pcs");
+        }
         holder.tvTotal.setText(list.get(position).getTotal() + context.getString(R.string.money_unit));
         holder.ivDelete.setOnClickListener(view -> listener.delete(position));
     }

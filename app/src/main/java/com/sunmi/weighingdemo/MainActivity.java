@@ -173,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
             Log.i(TAG, "服务未连接--->saasService==null");
             return;
         }
-        if (unit.equals("/kg")) {
+        if (unit.equals("kg")) {
             try {
                 saasService.requestPriceByKGram(price, 0, new SaasResult.Stub() {
                     @Override

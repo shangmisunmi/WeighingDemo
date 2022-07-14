@@ -50,54 +50,50 @@ public class DialogUtil {
 
         tv0.setOnClickListener(view13 -> {
             if (!sb.toString().isEmpty()){
-                sb.append(tv0.getText());
+                appendTxt(tv0.getText().toString());
                 tvPcs.setText(sb.toString());
             }
         });
 
         tv1.setOnClickListener(view14 -> {
-            sb.append(tv1.getText());
+            appendTxt(tv1.getText().toString());
             tvPcs.setText(sb.toString());
         });
 
         tv2.setOnClickListener(view15 -> {
-            sb.append(tv2.getText());
+            appendTxt(tv2.getText().toString());
             tvPcs.setText(sb.toString());
         });
 
         tv3.setOnClickListener(view16 -> {
-            sb.append(tv3.getText());
+            appendTxt(tv3.getText().toString());
             tvPcs.setText(sb.toString());
         });
 
         tv4.setOnClickListener(view17 -> {
-            sb.append(tv4.getText());
+            appendTxt(tv4.getText().toString());
             tvPcs.setText(sb.toString());
         });
 
         tv5.setOnClickListener(view18 -> {
-            sb.append(tv5.getText());
+            appendTxt(tv5.getText().toString());
             tvPcs.setText(sb.toString());
         });
 
         tv6.setOnClickListener(view19 -> {
-            sb.append(tv6.getText());
-            tvPcs.setText(sb.toString());
-        });
-        tv1.setOnClickListener(view110 -> {
-            sb.append(tv1.getText());
+            appendTxt(tv6.getText().toString());
             tvPcs.setText(sb.toString());
         });
         tv7.setOnClickListener(view111 -> {
-            sb.append(tv7.getText());
+            appendTxt(tv7.getText().toString());
             tvPcs.setText(sb.toString());
         });
         tv8.setOnClickListener(view112 -> {
-            sb.append(tv8.getText());
+            appendTxt(tv8.getText().toString());
             tvPcs.setText(sb.toString());
         });
         tv9.setOnClickListener(view113 -> {
-            sb.append(tv9.getText());
+            appendTxt(tv9.getText().toString());
             tvPcs.setText(sb.toString());
         });
 
@@ -111,6 +107,13 @@ public class DialogUtil {
         dialog.setCancelable(true);
         dialog.show();
     }
+
+    private static void appendTxt(String num){
+        if (sb != null && sb.length() <= 5){
+            sb.append(num);
+        }
+    }
+
 
     public static void disMissDialog() {
         if (dialog != null && dialog.isShowing()) {

@@ -25,20 +25,18 @@
     <string name="artichoke">Artichoke</string>
 
     <string name="print_title">XXX fruit store</string>
-    <string name="print_cashier">Cashier：ClerkA</string>
-    <string name="print_address">Brand：0008</string>
-    <string name="print_receipt">Doc No.：</string>
-    <string name="print_time">Printing time：</string>
-    <string name="print_name">Trade name</string>
-    <string name="print_price">Unit price</string>
-    <string name="print_pcs">Pcs/kg</string>
-    <string name="print_subtotal">Subtotal</string>
-    <string name="print_original_price">Original price：%s</string>
-    <string name="print_total">Total amount：</string>
-    <string name="print_current_price">Current price：%s</string>
-    <string name="print_pay">Paymet：</string>
-    <string name="print_received">Paid in：%s</string>
-    <string name="print_change">Change：0.00€</string>
+    <string name="print_cashier">Store：ClerkA</string>
+    <string name="print_address">Trans#：0008</string>
+    <string name="print_receipt">No.：20220408123649186001</string>
+    <string name="print_time">Date：%s</string>
+    <string name="print_name">Item</string>
+    <string name="print_price">Price</string>
+    <string name="print_pcs">Uom/Qty</string>
+    <string name="print_subtotal">AMT</string>
+    <string name="print_original_price">Total：%s</string>
+    <string name="print_current_price">In Cash：%s</string>
+    <string name="print_pay">Cash：%s</string>
+    <string name="print_change">Cashback：0.00%s</string>
     <string name="print_remark">remarks:</string>
     <string name="print_null">Nothing</string>
 

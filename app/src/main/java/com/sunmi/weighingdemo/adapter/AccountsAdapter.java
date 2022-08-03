@@ -42,7 +42,7 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.MyHold
         if (list.get(position).isWeigh()){
             holder.tvWeigh.setText(list.get(position).getWeigh() + "kg");
         }else {
-            holder.tvWeigh.setText(list.get(position).getWeigh() + "pcs");
+            holder.tvWeigh.setText((int) (list.get(position).getWeigh()) + "pcs");
         }
         holder.tvTotal.setText(list.get(position).getTotal() + context.getString(R.string.money_unit));
         holder.ivDelete.setOnClickListener(view -> listener.delete(position));

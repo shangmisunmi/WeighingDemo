@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sunmi.peripheral.printer.SunmiPrinterService;
+import com.sunmi.peripheral.printer.WoyouConsts;
 import com.sunmi.scaledisplay.SaasResult;
 import com.sunmi.scaledisplay.SaasService;
 import com.sunmi.weighingdemo.adapter.AccountsAdapter;
@@ -253,27 +254,29 @@ public class MainActivity extends AppCompatActivity {
             }
             if (printer != null) {
                 printer.printerInit(null);
-                printer.setFontSize(25f, null);
+                printer.setPrinterStyle(WoyouConsts.ENABLE_DOUBLE_HEIGHT, WoyouConsts.ENABLE);
                 printer.sendRAWData(new byte[]{0x1b, 0x61, 0x01}, null);
                 printer.printText(getString(R.string.print_title) + "\n\n", null);
-                printer.printColumnsString(new String[]{getString(R.string.print_cashier), getString(R.string.print_address)}, new int[]{1, 1}, new int[]{0, 2}, null);
-                printer.printColumnsString(new String[]{getString(R.string.print_receipt), "20220408123649186001"}, new int[]{2, 5}, new int[]{0, 2}, null);
+                printer.printColumnsString(new String[]{getString(R.string.print_cashier)}, new int[]{1}, new int[]{0}, null);
+                printer.printColumnsString(new String[]{getString(R.string.print_address)}, new int[]{1}, new int[]{0}, null);
+                printer.printColumnsString(new String[]{getString(R.string.print_receipt)}, new int[]{1}, new int[]{0}, null);
                 long timeMillis = System.currentTimeMillis();
                 String time = TimeUtils.formatDate(timeMillis, TimeUtils.FORMAT_TIME_ALL);
-                printer.printColumnsString(new String[]{getString(R.string.print_time), time}, new int[]{1, 2}, new int[]{0, 2}, null);
+                printer.printColumnsString(new String[]{getString(R.string.print_time, time)}, new int[]{1}, new int[]{0}, null);
                 printer.printText("\n" + line, null);
-                printer.printColumnsString(new String[]{getString(R.string.print_name), getString(R.string.print_price), getString(R.string.print_pcs), getString(R.string.print_subtotal)}, new int[]{2, 1, 2, 1}, new int[]{0, 1, 1, 1}, null);
+                printer.printColumnsString(new String[]{getString(R.string.print_name), getString(R.string.print_price), getString(R.string.print_pcs), getString(R.string.print_subtotal)}, new int[]{1, 1, 1, 1}, new int[]{0, 1, 1, 2}, null);
                 for (int i = 0; i < accountsList.size(); i++) {
                     if (accountsList.get(i).isWeigh()) {
                         printer.printColumnsString(new String[]{accountsList.get(i).getName(), accountsList.get(i).getPrice() + getString(R.string.money_unit) + "/" + accountsList.get(i).getPriceUnit(), accountsList.get(i).getWeigh() + "kg", accountsList.get(i).getTotal() + getString(R.string.money_unit)}, new int[]{2, 2, 2, 2}, new int[]{0, 1, 2, 2}, null);
                     } else {
-                        printer.printColumnsString(new String[]{accountsList.get(i).getName(), accountsList.get(i).getPrice() + getString(R.string.money_unit) + "/" + accountsList.get(i).getPriceUnit(), accountsList.get(i).getWeigh() + accountsList.get(i).getPriceUnit(), accountsList.get(i).getTotal() + getString(R.string.money_unit)}, new int[]{2, 2, 2, 2}, new int[]{0, 1, 2, 2}, null);
+                        printer.printColumnsString(new String[]{accountsList.get(i).getName(), accountsList.get(i).getPrice() + getString(R.string.money_unit) + "/" + accountsList.get(i).getPriceUnit(), (int) accountsList.get(i).getWeigh() + accountsList.get(i).getPriceUnit(), accountsList.get(i).getTotal() + getString(R.string.money_unit)}, new int[]{2, 2, 2, 2}, new int[]{0, 1, 2, 2}, null);
                     }
                 }
                 printer.printText("\n" + line, null);
-                printer.printColumnsString(new String[]{getString(R.string.print_original_price, tvTotal.getText().toString() + getString(R.string.money_unit)), getString(R.string.print_total, accountsList.size())}, new int[]{1, 1}, new int[]{0, 2}, null);
-                printer.printColumnsString(new String[]{getString(R.string.print_current_price, tvTotal.getText().toString() + getString(R.string.money_unit)), getString(R.string.print_pay)}, new int[]{1, 1}, new int[]{0, 2}, null);
-                printer.printColumnsString(new String[]{getString(R.string.print_received, tvTotal.getText().toString() + getString(R.string.money_unit)), getString(R.string.print_change)}, new int[]{1, 1}, new int[]{0, 2}, null);
+                printer.printColumnsString(new String[]{getString(R.string.print_original_price, tvTotal.getText().toString() + getString(R.string.money_unit))}, new int[]{1}, new int[]{0}, null);
+                printer.printColumnsString(new String[]{getString(R.string.print_current_price, tvTotal.getText().toString() + getString(R.string.money_unit))}, new int[]{1}, new int[]{0}, null);
+                printer.printColumnsString(new String[]{getString(R.string.print_pay, tvTotal.getText().toString() + getString(R.string.money_unit))}, new int[]{1}, new int[]{0}, null);
+                printer.printColumnsString(new String[]{getString(R.string.print_change, getString(R.string.money_unit))}, new int[]{1}, new int[]{0}, null);
                 printer.printText("\n" + line, null);
                 printer.printColumnsString(new String[]{getString(R.string.print_remark)}, new int[]{1}, new int[]{0}, null);
                 printer.printColumnsString(new String[]{getString(R.string.print_null)}, new int[]{1}, new int[]{0}, null);

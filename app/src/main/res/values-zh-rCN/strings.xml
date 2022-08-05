@@ -2,8 +2,8 @@
 
     <string name="app_name">WeighingDemo</string>
     <string name="title">Sunmi Weighing Demo</string>
-    <string name="version_name">Version：%s</string>
-    <string name="total_price">Total Price:(¥)</string>
+    <string name="version_name">版本：%s</string>
+    <string name="total_price">总价:(¥)</string>
     <string name="money_unit">¥</string>
     <string name="price">¥ %.2f</string>
     <string name="apple">苹果</string>

@@ -40,4 +40,10 @@
     <string name="print_remark">remarks:</string>
     <string name="print_null">Nothing</string>
 
+    <string name="item">item</string>
+    <string name="unit_price">Unit Price</string>
+    <string name="net">Net/Price</string>
+    <string name="sum">Sun</string>
+    <string name="reque">Reque</string>
+    <string name="settlement">Settlement</string>
 </resources>

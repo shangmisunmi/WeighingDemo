@@ -41,4 +41,10 @@
     <string name="print_remark">备注信息</string>
     <string name="print_null">无</string>
 
+    <string name="item">品类</string>
+    <string name="unit_price">单价</string>
+    <string name="net">重量/数量</string>
+    <string name="sum">小计</string>
+    <string name="reque">清空</string>
+    <string name="settlement">结算</string>
 </resources>
